@@ -19,7 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProjectSelectionTable from "./ProjectSelectionTable";
 
-const addUser = () => {
+const AddUser = () => {
     const router = useRouter();
 
     // State for client personal information
@@ -428,4 +428,4 @@ const addUser = () => {
     );
 };
 
-export default addUser;
+export default AddUser;

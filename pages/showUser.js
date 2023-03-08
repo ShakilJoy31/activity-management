@@ -6,7 +6,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { BsSearch } from "react-icons/bs";
 
-const showUser = () => {
+const ShowUsers = () => {
     const router = useRouter(); 
     const [users, setUsers] = useState([]);
     const [searchName, setSearchName] = useState('');
@@ -70,4 +70,4 @@ const showUser = () => {
     );
 };
 
-export default showUser;
+export default ShowUsers;

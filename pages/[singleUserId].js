@@ -18,7 +18,7 @@ import ShowUser from './ShowUser.module.css';
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
-const singleUser = () => {
+const SingleUser = () => {
     // Create and download PDF
     const componentRef = useRef()
     const handlePrint = useReactToPrint({
@@ -206,4 +206,4 @@ const singleUser = () => {
     );
 };
 
-export default singleUser;
+export default SingleUser;

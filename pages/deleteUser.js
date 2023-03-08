@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { getUser, deleteUserFromDb } from "@/components/lib/helper";
 import { BsArrowLeft } from 'react-icons/bs';
 
-const deleteUser = () => {
+const DeleteUser = () => {
     const router = useRouter(); 
     const [users, setUsers] = useState([]);
     const [deleteUserId, setDeleteUserId] = useState(''); 
@@ -137,4 +137,4 @@ const deleteUser = () => {
     );
 };
 
-export default deleteUser;
+export default DeleteUser;

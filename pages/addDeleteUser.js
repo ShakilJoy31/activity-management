@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import ShowUser from './ShowUser.module.css';
-const addDeleteUser = () => {
+const AddDeleteUser = () => {
     const router = useRouter();
     return (
         <div>
@@ -48,4 +48,4 @@ const addDeleteUser = () => {
     );
 };
 
-export default addDeleteUser;
+export default AddDeleteUser;
