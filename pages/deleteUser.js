@@ -48,7 +48,7 @@ const DeleteUser = () => {
                             </thead>
                             <tbody>
                                 {
-                                    users.map((user, index) => <tr>
+                                    users.map((user, index) => <tr key={index}>
                                         <th> <span className='flex justify-center'>{index + 1}</span> </th>
                                         <td><span className='flex justify-center'>{user?.name}</span></td>
                                         <td>

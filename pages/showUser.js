@@ -58,7 +58,7 @@ const ShowUsers = () => {
                 <div className='flex items-center justify-center'>
                 <div className={`grid grid-cols-2 gap-2 ${users?.length > 6 ? 'lg:grid-cols-6 md:grid-cols-4' : 'lg:grid-cols-4 md:grid-cols-3'} `}>
                     {
-                        users.map((user, index) => <div onClick={()=>router.push(user._id)} className={`w-48 p-4 hover:text-white hover:bg-black bg-white text-black cursor-pointer ${ShowUser?.paymentAbleFood}`}>
+                        users.map((user, index) => <div key={index} onClick={()=>router.push(user._id)} className={`w-48 p-4 hover:text-white hover:bg-black bg-white text-black cursor-pointer ${ShowUser?.paymentAbleFood}`}>
                             <h1 className='flex justify-center text-xl'>{(user?.name)?.slice(0, 25)}</h1>
                             <p className='flex justify-center'>{(user?.email)?.slice(0, 33)}</p>
                         </div>)
