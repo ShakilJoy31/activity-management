@@ -1,0 +1,80 @@
+.paymentAbleFood {
+    box-shadow: 2px 2px 15px 5px lightblue;
+    transition-duration: 500ms;
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+.paymentAbleFood:hover {
+    box-shadow: 2px 2px 15px 5px lightblue;
+    transition-duration: 500ms;
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+
+.userToggleCard {
+    box-shadow: 2px 2px 15px 5px aliceblue;
+    background-size: 100%;
+    background-repeat: repeat;
+    border-radius: 10px;
+    transition-duration: 250ms;
+}
+
+.userToggleCard:hover {
+    box-shadow: 2px 2px 15px 5px orange;
+    background-size: 100%;
+    background-repeat: repeat;
+    border-radius: 10px;
+    transition-duration: 250ms;
+}
+
+
+
+.userUpdateCard {
+    box-shadow: 2px 2px 15px 5px orange;
+    background-size: 100%;
+    background-repeat: repeat;
+    border-radius: 10px;
+    transition-duration: 250ms;
+    height: 525px;
+}
+
+.userUpdateCard:hover {
+    box-shadow: 2px 2px 15px 5px aliceblue;
+    background-size: 100%;
+    background-repeat: repeat;
+    border-radius: 10px;
+    transition-duration: 250ms;
+    height:525px;
+}
+
+.selectProject option{
+    padding: 3px;
+}
+
+.selectProject option:before{
+    content: "\2610";
+  margin-right: 5px;
+}
+
+.selectProject option:checked:before {
+    content: "\2611";
+  }
+
+  .adminCard{
+    background-size: 100%;
+    background-repeat: repeat;
+    transition-duration: 250ms;
+  }
+
+  .adminCard:hover{
+    box-shadow: 2px 2px 15px 5px orangered;
+    background-size: 100%;
+    background-repeat: repeat;
+    transition-duration: 250ms;
+  }
+
+  .backgroundImage{
+    
+  }
