@@ -18,6 +18,7 @@ const DeleteUser = () => {
         setUsers(restUser); 
         setDeleteUserId('');
     }
+    console.log(users); 
     return (
         <div>
             <div className='mx-12'>
@@ -48,7 +49,7 @@ const DeleteUser = () => {
                             </thead>
                             <tbody>
                                 {
-                                    users.map((user, index) => <tr key={index}>
+                                    users?.map((user, index) => <tr key={index}>
                                         <th> <span className='flex justify-center'>{index + 1}</span> </th>
                                         <td><span className='flex justify-center'>{user?.name}</span></td>
                                         <td>

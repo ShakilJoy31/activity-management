@@ -75,6 +75,35 @@
     transition-duration: 250ms;
   }
 
-  .backgroundImage{
-    
+  .pageBorder{
+    border-top: 30px solid rgb(243, 243, 6);
+    border-right: 30px solid rgb(243, 243, 6);
+    border-bottom: 30px solid rgb(243, 243, 6);
+    border-left: 30px solid rgb(243, 243, 6);
+    padding: 5px;
+  }
+
+  .invoiceAndDate{
+    border: 1px solid black;
+    color: black;
+  }
+
+  .dueShow{
+    border: 2px solid rgba(255, 0, 0, 0.51);
+    padding: 10px;
+    border-radius: 5px;
+    width: 130px;
+    background-color: aliceblue;
+  }
+
+  .download{
+    padding: 5px;
+    transition: transform 0.5s ease;
+    transition-duration: 500ms;
+  }
+
+  .download:hover{
+    border-radius: 2px;
+    transform: scale(1.1);
+    transition-duration: 500ms;
   }

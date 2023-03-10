@@ -147,63 +147,148 @@ const SingleUser = () => {
     // }
     // Taking daily activity as input.
     const [noteForClient, setNoteForClient] = useState(false)
+    console.log(user);
     return (
-        <div style={{ backgroundImage: `url('https://i.ibb.co/02WGMX8/Screenshot-1141.png')`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }} ref={componentRef} className={`pb-[850px] mx-72 ${ShowUser?.backgroundImage}`}>
-            <span className='cursor-pointer hover:text-orange-500' onClick={handlePrint}><FaDownload size={45}></FaDownload></span>
-            <div className='flex justify-end mr-[rem] mt-[rem]'>
-                
+        <div ref={componentRef} className={`mx-80 bg-white ${ShowUser?.pageBorder} ${ShowUser?.backgroundImage}`}>
+            {/* <div className={`${ShowUser.topBorder}`}></div> */}
+
+            <div className='flex justify-between mx-12'>
+                <div>
+                    <div onClick={handlePrint} className={`w-48 tooltip`} data-tip="Clik me to download">
+                    <img className={`w-48 tooltip ${ShowUser.download}`} src="https://i.ibb.co/0FJYB1d/Screenshot-1162.png" alt=""/>
+                    </div>
+
+                    <div className='mt-4'>
+                        <p className={`${ShowUser.invoiceAndDate} flex justify-around`}><span>Invoice No:</span> <span className='text-red-600'>{user?.orderId}</span></p>
+                        <p className={`${ShowUser.invoiceAndDate} flex justify-around`}><span>Date:</span> <span className='text-red-600'>{user?.endDate}</span></p>
+                    </div>
+                </div>
+
+                <div className=''>
+                    <p className='flex justify-center font-bold text-black text-7xl'>Invoice</p>
+
+                    <div className='mt-8'>
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
+                                <thead>
+                                    <tr>
+                                        <th><span className='flex justify-center'>FROM</span></th>
+                                        <th><span className='flex justify-center'>TO</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <p className='flex justify-center'>EXPERT SOLUTION</p>
+
+                                                
+                                                <p className='flex justify-center'>MD MURSHIDUL HAQUE</p>
+                                                
+
+                                                <p className='flex justify-center'>BANGLADESH</p>
+                                                
+
+                                                <p className='flex justify-center'>MURSHIDUL29@GMAIL.COM</p>
+                                                
+                                                <p className='flex justify-center'>+880 1772266236</p>
+
+                                                
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p className='flex justify-center'>User Information</p>
+                                                
+
+                                                <p className='flex justify-center'>{user?.clientName}</p>
+                                               
+
+                                                <p className='flex justify-center'>{user?.address}</p>
+
+                                                
+                                                <p className='flex justify-center'>{user?.email}</p>
+
+                                               
+                                                <p className='flex justify-center'>{user?.phone}</p>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Main Table */}
+
+            <div className='mx-12 mt-4'>
                 <div className="overflow-x-auto">
-                    <table className="w-64 text-black">
-                        {/* head */}
+                    <table className="table w-full">
+                        
                         <thead>
                             <tr>
-                                <th></th>
-                                <th></th>
+                                <th><span className='flex justify-center'>Service</span></th>
+                                <th><span className='flex justify-center'>Task</span></th>
+                                <th><span className='flex justify-center'>Price</span></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {/* row 1 */}
-                            <tr>
-                                <td>
-                                    <div>
-                                        <small>EXPERT SOLUTION</small>
 
-                                        <br />
-                                        <small>MD MURSHIDUL HAQUE</small>
-                                        <br />
+                            {
+                                selectedProject?.map((project, index) => <tr map={index}>
+                                    <th><span className='flex justify-center'>{project}</span></th>
+                                    <td><span className='flex justify-center'>{projectTaskArray[index]}</span></td>
+                                    <td><span className='flex justify-center'>{projectIndPrice[index]}</span></td>
+                                </tr>)
+                            }
 
-                                        <small>BANGLADESH</small>
-                                        <br />
-
-                                        <small>MURSHIDUL29@GMAIL.COM</small>
-                                        <br />
-                                        <small>+880 1772266236</small>
-
-                                        <br />
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <small>{user?.clientName}</small>
-                                        <br />
-
-                                        <small>{user?.address}</small>
-
-                                        <br />
-                                        <small>{user?.email}</small>
-
-                                        <br />
-                                        <small>{user?.phone}</small>
-                                        <br />
-                                        </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <div className='flex justify-end mx-12 mt-4'>
+                <div className='flex justify-between w-36'>
+
+                    <div>
+                    <p className='flex justify-end text-black'>Sub Total:</p>
+                    <p className='flex justify-end text-black'>(-) Discount: </p>
+                    <p className='flex justify-end text-black'>Paid: </p>
+                    </div>
+
+                    <div>
+                    <p className='text-red-600'>{totalPrice}</p>
+                    <p className='text-red-600'>{totalPrice * (2 / 100)}</p>
+                    <p className='text-red-600'>{user.paid}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div className='flex justify-between mx-12 mt-4'>
+                <img className='w-96' src="https://i.ibb.co/Hxsqjyg/332142867-590222216296249-973339747083001193-n.png" alt="" />
+
+                <div>
+                    <div className={`${ShowUser?.dueShow}`}>
+                        <p className='flex justify-between text-black'><span>Due: </span><span className='text-red-600'>{user?.due}</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div className='flex justify-center w-full mt-4'>
+                <img className='w-full' src="https://i.ibb.co/kcvF1wv/Screenshot-1163.png" alt="" />
+            </div>
+
+
         </div>
     );
 };
 
 export default SingleUser;
+
+
+{/* <span className='cursor-pointer hover:text-orange-500' onClick={handlePrint}><FaDownload size={45}></FaDownload></span> */ }

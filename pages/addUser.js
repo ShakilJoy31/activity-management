@@ -155,6 +155,7 @@ const AddUser = () => {
 
             addUsers(userFormData).then(res => {
                 if (res) {
+                    console.log(res); 
                     setOrderId('')
                     setFiles('')
                     setClientName('')
