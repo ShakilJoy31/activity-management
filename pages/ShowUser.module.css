@@ -98,12 +98,10 @@
 
   .download{
     padding: 5px;
-    transition: transform 0.5s ease;
-    transition-duration: 500ms;
+    transition: transform 0.3s ease;
   }
 
   .download:hover{
     border-radius: 2px;
     transform: scale(1.1);
-    transition-duration: 500ms;
   }

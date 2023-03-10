@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { getUser, specificUser, updateUser, updateUserActivity } from '@/components/lib/helper';
 import { useState } from 'react';
 import { FaDownload } from 'react-icons/fa';
-import { BsArrowLeft } from 'react-icons/bs';
+import { BsArrowLeft, BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
 import image from './Invoice Tamplate.svg';
 import ShowUser from './ShowUser.module.css';
 // import { HiSave } from 'react-icons/hi';
@@ -15,8 +15,8 @@ import ShowUser from './ShowUser.module.css';
 // import { RxUpdate } from 'react-icons/rx';
 // import { FaDownload } from 'react-icons/fa';
 // import { BiNotepad } from 'react-icons/bi';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleUser = () => {
     // Create and download PDF
@@ -123,168 +123,206 @@ const SingleUser = () => {
     })
 
     // Previous and Next button functionality
-    // const handlePreviousButton = () => {
-    //     const userPosition = users.indexOf(user) - 1;
-    //     const data = users[userPosition];
-    //     if (userPosition > -1) {
-    //         router.push(data._id)
-    //     }
-    //     else {
-    //         toast.error('No previous user found!');
-    //     }
-    // }
+    const handlePreviousButton = () => {
+        const userPosition = users.indexOf(user) - 1;
+        const data = users[userPosition];
+        if (userPosition > -1) {
+            router.push(data._id)
+        }
+        else {
+            toast.error('No previous user found!');
+        }
+    }
 
-    // const handleNextButton = () => {
-    //     const userPosition = users.indexOf(user) + 1;
-    //     console.log(userPosition, users.length);
-    //     const data = users[userPosition];
-    //     if (userPosition !== users?.length) {
-    //         router.push(data._id)
-    //     }
-    //     else {
-    //         toast.error('No next user found!');
-    //     }
-    // }
+
+    // Handle Next button functionality.
+    const handleNextButton = () => {
+        const userPosition = users.indexOf(user) + 1;
+        console.log(userPosition, users.length);
+        const data = users[userPosition];
+        if (userPosition !== users?.length) {
+            router.push(data._id)
+        }
+        else {
+            toast.error('No next user found!');
+        }
+    }
+
+
     // Taking daily activity as input.
     const [noteForClient, setNoteForClient] = useState(false)
     console.log(user);
     return (
-        <div ref={componentRef} className={`mx-80 bg-white ${ShowUser?.pageBorder} ${ShowUser?.backgroundImage}`}>
-            {/* <div className={`${ShowUser.topBorder}`}></div> */}
+        <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-between'>
+            <div>
+                <span onClick={handlePreviousButton} className='hover:text-black'><BsFillArrowLeftCircleFill size={35}></BsFillArrowLeftCircleFill></span>
+            </div>
 
-            <div className='flex justify-between mx-12'>
+            <div className='flex justify-center gap-x-6'>
                 <div>
-                    <div onClick={handlePrint} className={`w-48 tooltip`} data-tip="Clik me to download">
-                    <img className={`w-48 tooltip ${ShowUser.download}`} src="https://i.ibb.co/0FJYB1d/Screenshot-1162.png" alt=""/>
-                    </div>
-
-                    <div className='mt-4'>
-                        <p className={`${ShowUser.invoiceAndDate} flex justify-around`}><span>Invoice No:</span> <span className='text-red-600'>{user?.orderId}</span></p>
-                        <p className={`${ShowUser.invoiceAndDate} flex justify-around`}><span>Date:</span> <span className='text-red-600'>{user?.endDate}</span></p>
-                    </div>
+                <span onClick={() => router.push('/showUser')}><BsArrowLeft color={'orange'} size={35}></BsArrowLeft></span>
                 </div>
 
-                <div className=''>
-                    <p className='flex justify-center font-bold text-black text-7xl'>Invoice</p>
+                <div ref={componentRef} className={` bg-white ${ShowUser?.pageBorder} ${ShowUser?.backgroundImage}`}>
+                {/* <div className={`${ShowUser.topBorder}`}></div> */}
 
-                    <div className='mt-8'>
-                        <div className="overflow-x-auto">
-                            <table className="table w-full">
-                                <thead>
-                                    <tr>
-                                        <th><span className='flex justify-center'>FROM</span></th>
-                                        <th><span className='flex justify-center'>TO</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                <div className='flex justify-between mx-12 gap-x-6'>
+                    <div>
+                        <div onClick={handlePrint} className={`w-48 tooltip`} data-tip="Clik me to download">
+                            <img className={`w-48 tooltip ${ShowUser.download}`} src="https://i.ibb.co/0FJYB1d/Screenshot-1162.png" alt="" />
+                        </div>
 
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <p className='flex justify-center'>EXPERT SOLUTION</p>
+                        <div className='mt-4'>
+                            <p className={`${ShowUser.invoiceAndDate} flex justify-around`}><span className=''>Invoice No:</span> <span className='text-red-600'>{user?.orderId}</span></p>
+                            <p className={`${ShowUser.invoiceAndDate} flex justify-around`}><span className=''>Date:</span> <span className='text-red-600'>{user?.endDate}</span></p>
+                        </div>
+                    </div>
 
-                                                
-                                                <p className='flex justify-center'>MD MURSHIDUL HAQUE</p>
-                                                
+                    {/* another invoice */}
+                    {/* <div className='flex justify-between mt-4'>
+                        <div className={`${ShowUser.invoiceAndDate}`}>
+                        <span className={` flex justify-end`}>Invoice No:</span>
+                        <span className={` flex justify-end`}>Date:</span>
+                        </div>
+                        <div className={`${ShowUser.invoiceAndDate}`}>
+                        <span className='flex justify-end text-red-600'>{user?.orderId}</span>
+                        <span className='flex justify-end text-red-600'>{user?.endDate}</span>
+                        </div>
+                    </div> */}
 
-                                                <p className='flex justify-center'>BANGLADESH</p>
-                                                
+                    <div className=''>
+                        <p className='flex justify-center font-bold text-black text-7xl'>Invoice</p>
 
-                                                <p className='flex justify-center'>MURSHIDUL29@GMAIL.COM</p>
-                                                
-                                                <p className='flex justify-center'>+880 1772266236</p>
+                        <div className='mt-8'>
+                            <div className="overflow-x-auto">
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th><span className='flex justify-center'>FROM</span></th>
+                                            <th><span className='flex justify-center'>TO</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                                
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <p className='flex justify-center'>User Information</p>
-                                                
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <p className='flex justify-center'>EXPERT SOLUTION</p>
 
-                                                <p className='flex justify-center'>{user?.clientName}</p>
-                                               
 
-                                                <p className='flex justify-center'>{user?.address}</p>
+                                                    <p className='flex justify-center'>MD MURSHIDUL HAQUE</p>
 
-                                                
-                                                <p className='flex justify-center'>{user?.email}</p>
 
-                                               
-                                                <p className='flex justify-center'>{user?.phone}</p>
-                                               
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                    <p className='flex justify-center'>BANGLADESH</p>
+
+
+                                                    <p className='flex justify-center'>MURSHIDUL29@GMAIL.COM</p>
+
+                                                    <p className='flex justify-center'>+880 1772266236</p>
+
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <p className='flex justify-center'>User Information</p>
+
+
+                                                    <p className='flex justify-center'>{user?.clientName}</p>
+
+
+                                                    <p className='flex justify-center'>{user?.address}</p>
+
+
+                                                    <p className='flex justify-center'>{user?.email}</p>
+
+
+                                                    <p className='flex justify-center'>{user?.phone}</p>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Main Table */}
+                {/* Main Table */}
 
-            <div className='mx-12 mt-4'>
-                <div className="overflow-x-auto">
-                    <table className="table w-full">
-                        
-                        <thead>
-                            <tr>
-                                <th><span className='flex justify-center'>Service</span></th>
-                                <th><span className='flex justify-center'>Task</span></th>
-                                <th><span className='flex justify-center'>Price</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <div className='mx-12 mt-4'>
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
 
-                            {
-                                selectedProject?.map((project, index) => <tr map={index}>
-                                    <th><span className='flex justify-center'>{project}</span></th>
-                                    <td><span className='flex justify-center'>{projectTaskArray[index]}</span></td>
-                                    <td><span className='flex justify-center'>{projectIndPrice[index]}</span></td>
-                                </tr>)
-                            }
+                            <thead>
+                                <tr>
+                                    <th><span className='flex justify-center'>Service</span></th>
+                                    <th><span className='flex justify-center'>Task</span></th>
+                                    <th><span className='flex justify-center'>Price</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
+                                {
+                                    selectedProject?.map((project, index) => <tr map={index}>
+                                        <th><span className='flex justify-center'>{project}</span></th>
+                                        <td><span className='flex justify-center'>{projectTaskArray[index]}</span></td>
+                                        <td><span className='flex justify-center'>{projectIndPrice[index]}</span></td>
+                                    </tr>)
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div className='flex justify-end mx-12 mt-4'>
-                <div className='flex justify-between w-36'>
+                <div className='flex justify-end mx-12 mt-4'>
+                    <div className='flex justify-between w-36'>
+
+                        <div>
+                            <p className='flex justify-end text-black'>Sub Total:</p>
+                            <p className='flex justify-end text-black'>(-) Discount: </p>
+                            <p className='flex justify-end text-black'>Paid: </p>
+                        </div>
+
+                        <div>
+                            <p className='text-red-600'>{totalPrice}</p>
+                            <p className='text-red-600'>{totalPrice * (2 / 100)}</p>
+                            <p className='text-red-600'>{user.paid}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div className='flex justify-between mx-12 mt-4'>
+                    <img className='w-96' src="https://i.ibb.co/Hxsqjyg/332142867-590222216296249-973339747083001193-n.png" alt="" />
 
                     <div>
-                    <p className='flex justify-end text-black'>Sub Total:</p>
-                    <p className='flex justify-end text-black'>(-) Discount: </p>
-                    <p className='flex justify-end text-black'>Paid: </p>
-                    </div>
-
-                    <div>
-                    <p className='text-red-600'>{totalPrice}</p>
-                    <p className='text-red-600'>{totalPrice * (2 / 100)}</p>
-                    <p className='text-red-600'>{user.paid}</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div className='flex justify-between mx-12 mt-4'>
-                <img className='w-96' src="https://i.ibb.co/Hxsqjyg/332142867-590222216296249-973339747083001193-n.png" alt="" />
-
-                <div>
-                    <div className={`${ShowUser?.dueShow}`}>
-                        <p className='flex justify-between text-black'><span>Due: </span><span className='text-red-600'>{user?.due}</span></p>
+                        <div className={`${ShowUser?.dueShow}`}>
+                            <p className='flex justify-between text-black'><span>Due: </span><span className='text-red-600'>{user?.due}</span></p>
+                        </div>
                     </div>
                 </div>
+
+                <div className='flex justify-center w-full mt-4'>
+                    <img className='w-full' src="https://i.ibb.co/kcvF1wv/Screenshot-1163.png" alt="" />
+                </div>
+
+
             </div>
 
-            <div className='flex justify-center w-full mt-4'>
-                <img className='w-full' src="https://i.ibb.co/kcvF1wv/Screenshot-1163.png" alt="" />
+            </div>  
+
+            <div className='ml-12'>
+                <span onClick={handleNextButton} className='hover:text-black'><BsFillArrowRightCircleFill size={35}></BsFillArrowRightCircleFill></span>
             </div>
 
-
+            <ToastContainer></ToastContainer>
         </div>
+        </div>
+
     );
 };
 
