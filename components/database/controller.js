@@ -1,10 +1,10 @@
-import myUser from "../model/userModal";
-import activity from "../model/activityModal";
+import myClient from "../model/userModal";
+// import activity from "../model/activityModal";
 
 
 export async function getUsers (req, res) {
     try{
-        const users = await myUser.find({}); 
+        const users = await myClient.find({}); 
         if(!users){
             return res.status(404).json({error: 'Data not found'})
         }
@@ -18,13 +18,12 @@ export async function getUsers (req, res) {
 export async function postUsers (req, res) {
     try{
         const formData = req.body;
-        console.log(formData); 
         if(!formData){
             return res.status(404).json({error: 'Form data is not provided....!'});
         }
         else{
-            myUser.create(formData, (error, data)=>{
-                console.log(error)
+            myClient.create(formData, (error, data)=>{
+                console.log(data); 
                 return res.status(200).json(data); 
             })   
         }
@@ -39,7 +38,7 @@ export async function putUsers (req, res) {
         const {userId} = req.query; 
         const formData = req.body; 
         if(userId && formData){
-            const user = await myUser.findByIdAndUpdate(userId, formData)
+            const user = await myClient.findByIdAndUpdate(userId, formData)
             res.status(200).json(user); 
         }
         res.status(404).json({error: 'User is not selected...!'}); 
@@ -55,7 +54,7 @@ export async function putUsersActivity (req, res) {
         const formData = req.body;
         console.log(formData); 
         if(userId && formData){
-            const user = await myUser.findByIdAndUpdate(userId, formData)
+            const user = await myClient.findByIdAndUpdate(userId, formData)
             res.status(200).json(user); 
         }
         res.status(404).json({error: 'User is not selected...!'}); 
@@ -69,7 +68,7 @@ export async function deleteUser (req, res){
     try{
         const {userId} = req.query; 
         if(userId){
-            const user = await myUser.findByIdAndDelete(userId); 
+            const user = await myClient.findByIdAndDelete(userId); 
             return res.status(200).json({deleted: user}); 
         }
         res.status(404).json({error:'User id is not selected'}); 
@@ -84,7 +83,7 @@ export async function getSpecificUser(req, res) {
     try{
         const {singleUserId} = req.query; 
         if(singleUserId){
-            const user = await myUser.findById(singleUserId); 
+            const user = await myClient.findById(singleUserId); 
             return res.status(200).json(user); 
         }
         res.status(404).json({error: 'User id is not found.'}); 
@@ -107,18 +106,3 @@ export async function getSpecificUser(req, res) {
 //         res.status(404).json({error: 'Operation failed to get a specific user.'}); 
 //     }
 // }
-
-
-export async function postUsersUpdate (req, res) {
-    try{
-        const formData = req.body; 
-        if(!formData){
-            return res.status(404).json({error: 'Form data is not provided....!'});
-        }
-        activity.create(formData, (error, data)=>{
-            return res.status(200).json(data); 
-        })
-    }catch(error){
-        return res.status(404).json({error: 'Operation failed'}); 
-    }
-}

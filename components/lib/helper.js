@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3000";
 
-// const baseUrl = "https://activity-management-ej2x.vercel.app"; For Production
+// http://localhost:3000
 
 // Get all the user from the database
 export const getUser = async () =>{
@@ -21,7 +21,6 @@ export const addUsers = async (formData) => {
             }
             const response = await fetch(`${baseUrl}/api/myUser`, Options); 
             const json = await response.json(); 
-            console.log(json); 
             return json; 
         }catch(error){
             return(error)
@@ -31,7 +30,6 @@ export const addUsers = async (formData) => {
 // Update User
 export async function updateUser (userId, formData) {
     try{
-        console.log(userId, formData); 
         const Options = {
                 method: 'PUT',
                 headers: {
@@ -47,23 +45,23 @@ export async function updateUser (userId, formData) {
         }
 }
 
-export async function updateUserActivity (userId, formData) {
-    try{
-        console.log(userId, formData); 
-        const Options = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            }
-            const response = await fetch(`${baseUrl}/api/myUser/?userId=${userId}`, Options)
-            const json = await response.json(); 
-            return json; 
-        }catch(error){
-            return (error);  
-        }
-}
+// export async function updateUserActivity (userId, formData) {
+//     try{
+//         console.log(userId, formData); 
+//         const Options = {
+//                 method: 'PUT',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify(formData)
+//             }
+//             const response = await fetch(`${baseUrl}/api/myUser/?userId=${userId}`, Options)
+//             const json = await response.json(); 
+//             return json; 
+//         }catch(error){
+//             return (error);  
+//         }
+// }
 
 // Delete user
 export async function deleteUserFromDb (userId){
@@ -87,48 +85,8 @@ export async function deleteUserFromDb (userId){
 }
 
 // Gegging the specific user
-export async function specificUser (userId){
-  const res = await fetch(`${baseUrl}/api/myUser/${userId}`);
-  const user = await res.json();
-  return user; 
-}
-
-
-// Activity of the user............
-// export const addUsersActivity = async (formData) => {
-//     console.log(formData);
-//     try{
-//         const Options = {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(formData)
-//         }
-//         const response = await fetch(`${baseUrl}/api/myUser`, Options); 
-//         const json = await response.json(); 
-//         console.log(json); 
-//         return json; 
-//     }catch(error){
-//         return(error)
-//     }
-// }
-
-
-// export async function updateActivity (userId, formData) {
-//     try{
-//         console.log(userId, formData); 
-//         const Options = {
-//                 method: 'PUT',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(formData)
-//             }
-//             const response = await fetch(`${baseUrl}/api/myUser/?userId=${userId}`, Options)
-//             const json = await response.json(); 
-//             return json; 
-//         }catch(error){
-//             return (error);  
-//         }
+// export async function specificUser (userId){
+//   const res = await fetch(`${baseUrl}/api/myUser/${userId}`);
+//   const user = await res.json();
+//   return user; 
 // }

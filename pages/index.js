@@ -19,7 +19,7 @@ export default function Home() {
   const router = useRouter();
   const handleLogin = () => {
     if(email && password){
-      if (email === 'sourav@gmail.com' && password === '12345') {
+      if (email === 'labib@gmail.com' && password === '12345') {
         router.push('/addDeleteUser');
       }
       else{
@@ -38,9 +38,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <h1 className='flex justify-center text-4xl text-orange-500'>Let me recognize you first.</h1>
-        <div className="bg-orange-200 card w-96 hover:shadow-2xl">
+      <main>
+        <h1 className='flex justify-center py-8 text-4xl text-orange-500'>Let me recognize you first.</h1>
+        <div className='flex justify-center'>
+        <div style={{
+          backgroundColor: '#19A7CE',
+          borderRadius: '5px',
+        }} className="card w-96 hover:shadow-2xl">
           <div className="card-body">
             <h1 className="flex justify-center text-4xl text-black">Login here</h1>
             <div>
@@ -77,6 +81,8 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </div>
+        
         <ToastContainer></ToastContainer>
       </main>
     </>

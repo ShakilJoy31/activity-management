@@ -1,12 +1,10 @@
 import { Schema, models, model } from 'mongoose';
 
-const userSchema = new Schema({
+const clientSchema = new Schema({
     name: String,
     email: String,
     phone: Number,
     address: String,
-    education: String,
-    hobby: String,
     
     orderId: String,
     files: String,
@@ -21,9 +19,8 @@ const userSchema = new Schema({
     due: Number,
     status: String,
     startDate: String,
-    endDate: String,
-    note: String
+    endDate: String
 })
 
-const myUser = models.allUser || model('allUser', userSchema);
-export default myUser;
+const myClient = models.clientInfo || model('clientInfo', clientSchema);
+export default myClient;

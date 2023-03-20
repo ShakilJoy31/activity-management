@@ -37,7 +37,8 @@
     background-repeat: repeat;
     border-radius: 10px;
     transition-duration: 250ms;
-    height: 525px;
+    height: 445px;
+    width: 400px;
 }
 
 .userUpdateCard:hover {
@@ -46,7 +47,8 @@
     background-repeat: repeat;
     border-radius: 10px;
     transition-duration: 250ms;
-    height:525px;
+    height:445px;
+    width: 400px;
 }
 
 .selectProject option{

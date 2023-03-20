@@ -2,19 +2,10 @@ import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { getUser, specificUser, updateUser, updateUserActivity } from '@/components/lib/helper';
+import { getUser } from '@/components/lib/helper';
 import { useState } from 'react';
-import { FaDownload } from 'react-icons/fa';
 import { BsArrowLeft, BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
-import image from './Invoice Tamplate.svg';
 import ShowUser from './ShowUser.module.css';
-// import { HiSave } from 'react-icons/hi';
-// import { RxReset } from 'react-icons/rx';
-// import { GiPlayerNext } from 'react-icons/gi';
-// import { GiPlayerPrevious } from 'react-icons/gi';
-// import { RxUpdate } from 'react-icons/rx';
-// import { FaDownload } from 'react-icons/fa';
-// import { BiNotepad } from 'react-icons/bi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,7 +20,6 @@ const SingleUser = () => {
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState([]);
     useEffect(() => {
-        // specificUser(router?.query?.singleUserId).then(res => setUsers(res))
         getUser().then(res => setUsers(res))
         if (users?.length !== 0) {
             const foundUser = users.find(singleUser => singleUser._id === router?.query?.singleUserId);
@@ -138,7 +128,6 @@ const SingleUser = () => {
     // Handle Next button functionality.
     const handleNextButton = () => {
         const userPosition = users.indexOf(user) + 1;
-        console.log(userPosition, users.length);
         const data = users[userPosition];
         if (userPosition !== users?.length) {
             router.push(data._id)
@@ -150,8 +139,6 @@ const SingleUser = () => {
 
 
     // Taking daily activity as input.
-    const [noteForClient, setNoteForClient] = useState(false)
-    console.log(user);
     return (
         <div className='flex items-center justify-center'>
             <div className='flex items-center justify-between'>

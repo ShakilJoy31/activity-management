@@ -1,5 +1,5 @@
 import connectMongo from "../../../components/database/conn";
-import { getUsers, postUsers, putUsers, deleteUser, postUsersUpdate, putUsersActivity } from "../../../components/database/controller";
+import { getUsers, postUsers, putUsers, deleteUser, putUsersActivity } from "../../../components/database/controller";
 
 export default async function handler(req, res) {
     connectMongo().catch(()=> res.status(405).json({error: 'Error in the Connection'}));

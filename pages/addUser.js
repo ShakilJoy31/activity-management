@@ -27,8 +27,6 @@ const AddUser = () => {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
-    const [education, setEducation] = useState('');
-    const [hobby, setHobby] = useState('');
 
 
     // State for client official information
@@ -47,61 +45,35 @@ const AddUser = () => {
     const [note, setNote] = useState('');
 
     // State for project
-    const [shopify, setShopify] = useState(false); 
-    const [wooCommerce, setWooCommerce] = useState(false); 
-    const [addProducts, setAddProducts] = useState(false); 
-    const [createWebsite, setCreateWebsite] = useState(false); 
-    const [GMBProfile, setGMBProfile] = useState(false); 
-    const [analyticsSetup, setAnalyticsSetup] = useState(false); 
+    const [shopify, setShopify] = useState(false);
+    const [wooCommerce, setWooCommerce] = useState(false);
+    const [addProducts, setAddProducts] = useState(false);
+    const [createWebsite, setCreateWebsite] = useState(false);
+    const [GMBProfile, setGMBProfile] = useState(false);
+    const [analyticsSetup, setAnalyticsSetup] = useState(false);
     const [websiteLogo, setWebsiteLogo] = useState(false);
 
     // State for project price management
-    let [shopifyInput, setShopifyInput] = useState(0); 
-    let [wooCommerceInput, setWooCommerceInput] = useState(0); 
-    let [addProductsInput, setAddProductsInput] = useState(0); 
-    let [createWebsiteInput, setCreateWebsiteInput] = useState(0); 
-    let [GMBProfileInput, setGMBProfileInput] = useState(0); 
-    let [analyticsSetupInput, setAnalyticsSetupInput] = useState(0); 
+    let [shopifyInput, setShopifyInput] = useState(0);
+    let [wooCommerceInput, setWooCommerceInput] = useState(0);
+    let [addProductsInput, setAddProductsInput] = useState(0);
+    let [createWebsiteInput, setCreateWebsiteInput] = useState(0);
+    let [GMBProfileInput, setGMBProfileInput] = useState(0);
+    let [analyticsSetupInput, setAnalyticsSetupInput] = useState(0);
     let [websiteLogoInput, setWebsiteLogoInput] = useState(0);
 
     // States for project task
-    const [shopifyTask, setShopifyTask] = useState(''); 
-    const [wooCommerceTask, setWooCommerceTask] = useState(''); 
-    const [addProductsTask, setAddProductsTask] = useState(''); 
-    const [createWebsiteTask, setCreateWebsiteTask] = useState(''); 
-    const [GMBProfileTask, setGMBProfileTask] = useState(''); 
-    const [analyticsSetupTask, setAnalyticsSetupTask] = useState(''); 
-    const [websiteLogoTask, setWebsiteLogoTask] = useState(''); 
-
-    console.log()
+    const [shopifyTask, setShopifyTask] = useState('');
+    const [wooCommerceTask, setWooCommerceTask] = useState('');
+    const [addProductsTask, setAddProductsTask] = useState('');
+    const [createWebsiteTask, setCreateWebsiteTask] = useState('');
+    const [GMBProfileTask, setGMBProfileTask] = useState('');
+    const [analyticsSetupTask, setAnalyticsSetupTask] = useState('');
+    const [websiteLogoTask, setWebsiteLogoTask] = useState('');
 
     const totalPrice = shopifyInput + wooCommerceInput + addProductsInput + createWebsiteInput + GMBProfileInput + analyticsSetupInput + websiteLogoInput;
 
     // Form Data section
-
-    const handleAddUserButton = () => {
-        if (!name || !email || !phone || !address || !education) {
-            toast.error('Missing Personal Information')
-        }
-        else {
-            const formData = {
-                name: name,
-                email: email,
-                phone: phone,
-                address: address,
-                education: education
-            }
-            console.log(formData);
-            // updateUser(router?.query?.singleUserId, formData).then(res => {
-            //     setName('');
-            //     setEmail('');
-            //     setPhone('');
-            //     setAddress('');
-            //     setEducation('');
-            //     toast.success('Information is updated successfully')
-            // })
-        }
-    }
 
     const handleUserDataUpdateButton = () => {
         if (totalPrice) {
@@ -110,26 +82,24 @@ const AddUser = () => {
                 email: email,
                 phone: phone,
                 address: address,
-                education: education,
-                hobby: hobby,
                 orderId: orderId,
                 files: files,
                 clientName: clientName,
                 website: website,
                 projectName: projectName,
                 projectList: {
-                    shopify:shopify, 
-                    WooCommerce: wooCommerce, 
-                    addProducts: addProducts, 
+                    shopify: shopify,
+                    WooCommerce: wooCommerce,
+                    addProducts: addProducts,
                     createWebsite: createWebsite,
                     GMBProfile: GMBProfile,
                     analyticsSetup: analyticsSetup,
                     websiteLogo: websiteLogo
                 },
                 projectTask: {
-                    shopifyTask:shopifyTask, 
-                    WooCommerceTask: wooCommerceTask, 
-                    addProductsTask: addProductsTask, 
+                    shopifyTask: shopifyTask,
+                    WooCommerceTask: wooCommerceTask,
+                    addProductsTask: addProductsTask,
                     createWebsiteTask: createWebsiteTask,
                     GMBProfileTask: GMBProfileTask,
                     analyticsSetupTask: analyticsSetupTask,
@@ -137,9 +107,9 @@ const AddUser = () => {
                 },
                 projectAccess: projectAccess,
                 price: {
-                    shopifyInput:shopifyInput, 
-                    WooCommerceInput: wooCommerceInput, 
-                    addProductsInput: addProductsInput, 
+                    shopifyInput: shopifyInput,
+                    WooCommerceInput: wooCommerceInput,
+                    addProductsInput: addProductsInput,
                     createWebsiteInput: createWebsiteInput,
                     GMBProfileInput: GMBProfileInput,
                     analyticsSetupInput: analyticsSetupInput,
@@ -149,13 +119,12 @@ const AddUser = () => {
                 due: totalPrice - paid,
                 status: status,
                 startDate: startDate,
-                endDate: endDate,
-                note: note
+                endDate: endDate
             }
 
             addUsers(userFormData).then(res => {
                 if (res) {
-                    console.log(res); 
+                    console.log(res);
                     setOrderId('')
                     setFiles('')
                     setClientName('')
@@ -168,7 +137,6 @@ const AddUser = () => {
                     setStatus('')
                     setStartDate('')
                     setEndDate('')
-                    setNote('')
                     toast.success('User is added successfully')
                 }
                 else {
@@ -203,15 +171,14 @@ const AddUser = () => {
         setStatus('')
         setStartDate('')
         setEndDate('')
-        setNote('')
         toast.success('Input fields are empty.')
     }
 
     const [projectSelectionModal, setProjectSelectionModal] = useState(false)
 
     return (
-        <div ref={componentRef} className='pb-4 mx-16'>
-            <h1 className="flex justify-center pt-6 mb-8 text-4xl font-bold text-orange-500">Add a Client here.</h1>
+        <div ref={componentRef} className='pb-2'>
+            <h1 className="flex justify-center mb-8 text-4xl font-bold text-orange-500">Add a Client here.</h1>
             <div className=" hero">
                 <span onClick={() => router.push('/addDeleteUser')} style={{
                     position: 'absolute',
@@ -221,56 +188,54 @@ const AddUser = () => {
                 }}><BsArrowLeft color={'orange'} size={35}></BsArrowLeft></span>
                 <div className="grid justify-center lg:flex gap-x-6">
 
-                    <img style={{
-                        position:'absolute',
-                        left:'26%',
-                        top:'13%'
-                    }} className="w-20 h-20 rounded-md" src="https://i.ibb.co/fDQ6SHM/Expert-Solution-Black.gif" alt="" />
-                    <div className={`flex-shrink-0 w-full mt-24 max-w-sm bg-black card ${ShowUser?.userUpdateCard}`}>
-                        <div>
-                            <div className={`p-6`}>
-                                <h1 className="flex justify-center mb-4 text-xl text-white">
-                                    <span className='flex items-center justify-center gap-x-4'>
-                                        <span><FaUserAlt color={'white'} size={25}></FaUserAlt></span>
-                                        <span>Client Personal Information.</span>
-                                    </span>
-                                </h1>
-                                <div className="mb-6 form-control">
-                                    <label className="label">
-                                        <span className="text-white ">Name</span>
-                                    </label>
-                                    <input onChange={(e) => setName(e.target.value)} type="text" placeholder='Type your name' value={name} className="input focus:outline-none " />
-                                </div>
-                                <div className="mb-6 form-control">
-                                    <label className="label">
-                                        <span className="text-white ">Email</span>
-                                    </label>
-                                    <input onChange={(e) => setEmail(e.target.value)} type="email" value={email} placeholder='Type your email' className="input focus:outline-none" />
-                                </div>
-                                <div className="mb-6 form-control">
-                                    <label className="label">
-                                        <span className="text-white ">Phone</span>
-                                    </label>
-                                    <input onChange={(e) => setPhone(e.target.value)} type="number" placeholder='Type your phone number' value={phone} className="input focus:outline-none " />
-                                </div>
-                                <div className="mb-6 form-control">
-                                    <label className="label">
-                                        <span className="text-white ">Address</span>
-                                    </label>
-                                    <input onChange={(e) => setAddress(e.target.value)} type="text" value={address} placeholder='Type your address' className="input focus:outline-none " />
-                                </div>
-                                
+                    <div className=''>
+                        <img className="block mx-auto mb-4 rounded-md w-44 h-44" src="https://i.ibb.co/fDQ6SHM/Expert-Solution-Black.gif" alt="" />
 
-                                
+                        <div className={`flex-shrink-0 bg-black card ${ShowUser?.userUpdateCard}`}>
+                            <div>
+                                <div className={`p-4`}>
+                                    <h1 className="flex justify-center text-xl text-white">
+                                        <span className='flex items-center justify-center gap-x-4'>
+                                            <span><FaUserAlt color={'white'} size={25}></FaUserAlt></span>
+                                            <span>Client Personal Information.</span>
+                                        </span>
+                                    </h1>
+                                    <div className="mb-2 form-control">
+                                        <label className="label">
+                                            <span className="text-white ">Name</span>
+                                        </label>
+                                        <input onChange={(e) => setName(e.target.value)} type="text" placeholder='Type your name' value={name} className="input focus:outline-none " />
+                                    </div>
+                                    <div className="mb-2 form-control">
+                                        <label className="label">
+                                            <span className="text-white ">Email</span>
+                                        </label>
+                                        <input onChange={(e) => setEmail(e.target.value)} type="email" value={email} placeholder='Type your email' className="input focus:outline-none" />
+                                    </div>
+                                    <div className="mb-2 form-control">
+                                        <label className="label">
+                                            <span className="text-white ">Phone</span>
+                                        </label>
+                                        <input onChange={(e) => setPhone(e.target.value)} type="number" placeholder='Type your phone number' value={phone} className="input focus:outline-none " />
+                                    </div>
+                                    <div className="mb-2 form-control">
+                                        <label className="label">
+                                            <span className="text-white ">Address</span>
+                                        </label>
+                                        <input onChange={(e) => setAddress(e.target.value)} type="text" value={address} placeholder='Type your address' className="input focus:outline-none " />
+                                    </div>
+
+
+
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
                     {/* User Card */}
                     <div ref={componentRef} className={`text-center lg:text-left ${ShowUser?.userToggleCard} pb-6 pl-6 pr-6 w-full pt-2 h-full`}>
 
-                        <h1 className="flex justify-center my-2 text-2xl text-white">Client Official Information</h1>
+                        <h1 className="flex justify-center mt-4 mb-6 text-2xl text-white">Client Official Information</h1>
 
                         <div>
                             <div className=''>
