@@ -1,6 +1,7 @@
-const baseUrl = "https://activity-management.vercel.app";
+const baseUrl = "http://localhost:3000";
 
 // http://localhost:3000
+// https://activity-management.vercel.app
 
 // Get all the user from the database
 export const getUser = async () =>{
