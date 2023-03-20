@@ -166,18 +166,6 @@ const SingleUser = () => {
                         </div>
                     </div>
 
-                    {/* another invoice */}
-                    {/* <div className='flex justify-between mt-4'>
-                        <div className={`${ShowUser.invoiceAndDate}`}>
-                        <span className={` flex justify-end`}>Invoice No:</span>
-                        <span className={` flex justify-end`}>Date:</span>
-                        </div>
-                        <div className={`${ShowUser.invoiceAndDate}`}>
-                        <span className='flex justify-end text-red-600'>{user?.orderId}</span>
-                        <span className='flex justify-end text-red-600'>{user?.endDate}</span>
-                        </div>
-                    </div> */}
-
                     <div className=''>
                         <p className='flex justify-center font-bold text-black text-7xl'>Invoice</p>
 
@@ -253,7 +241,7 @@ const SingleUser = () => {
                             <tbody>
 
                                 {
-                                    selectedProject?.map((project, index) => <tr map={index}>
+                                    selectedProject?.map((project, index) => <tr key={index}>
                                         <th><span className='flex justify-center'>{project}</span></th>
                                         <td><span className='flex justify-center'>{projectTaskArray[index]}</span></td>
                                         <td><span className='flex justify-center'>{projectIndPrice[index]}</span></td>
