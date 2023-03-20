@@ -1,4 +1,4 @@
-const baseUrl = "https://activity-management.vercel.app";
+const baseUrl = "http://localhost:3000";
 
 // http://localhost:3000
 
